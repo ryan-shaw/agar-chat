@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Agar chat",
+  "description": "Agar.io chat",
+  "version": "0.1",
+
+  "content_scripts": [
+    {
+      "run_at" : "document_end",
+      "matches": ["http://agar.io/*"],
+      "css": ["styles.css"],
+      "js": ["jquery-1.11.3.min.js", "script.js"]
+    }
+  ],
+  "permissions": [
+    "http://agar.io/"
+  ]
+}
