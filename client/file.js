@@ -35,7 +35,7 @@ var socket;
         });
 
         g('.chat input').on('keydown', function(e){
-            if(e.which !== 13) return;
+            if(e.which !== 13 && typeof nick !== 'undefined') return;
             console.log('sending');
             var text = g('.message input').val();
             console.log(text);
