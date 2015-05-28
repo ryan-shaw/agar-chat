@@ -10,11 +10,11 @@ var socket;
         g('.messages').append(g('<ul class="list"></ul>'));
 
         // Test messages
-        g('.messages .list').append('<li><span class="name">Ryan:</span> This is a test message. This is a test message. This is a test message');
-        for(var i = 0; i < 20; i++){
-            g('.messages .list').append('<li><span class="name">Ryan:</span> This is a test message');
-
-        }
+        // g('.messages .list').append('<li><span class="name">Ryan:</span> This is a test message. This is a test message. This is a test message');
+        // for(var i = 0; i < 20; i++){
+        //     g('.messages .list').append('<li><span class="name">Ryan:</span> This is a test message');
+        //
+        // }
 
         g('.chat').append(g('<ul class="message"><li><span class="text">Message: </span></li><li class="last"><input type="text"/></li>'));
         g('#playBtn').on('click', function(e){
@@ -25,13 +25,12 @@ var socket;
         });
 
         // Connect socket
-        socket = io('http://localhost:1112');
+        socket = io('http://46.101.19.167:1112');
         socket.on('connect', function(){
             console.log('Connected to chat server');
         });
 
         socket.on('message', function(data){
-            console.log(data);
             msgAppend(data.nick, data.msg);
         });
 
@@ -48,6 +47,8 @@ var socket;
 
     function msgAppend(from, msg){
         g('.messages .list').append('<li><span class="name">' + from + ':</span> ' + msg);
+        var height = g('.messages .list').scrollHeight;
+        g('.messages .list').scrollTop(height);
     }
 
     function Fa() {
