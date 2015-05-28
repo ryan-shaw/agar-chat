@@ -8,6 +8,7 @@ var socket;
         g('body').append(g('<div class="chat"></div>'));
         g('.chat').append(g('<div class="messages"></div>'));
         g('.messages').append(g('<ul class="list"></ul>'));
+        g('#instructions .text-muted').append('Press <b>Y</b> to chat');
 
         // Test messages
         // g('.messages .list').append('<li><span class="name">Ryan:</span> This is a test message. This is a test message. This is a test message');
@@ -34,12 +35,17 @@ var socket;
             msgAppend(data.nick, data.msg);
         });
 
+        g(document).on('keydown', function(e){
+            if(e.which === 89 && !g('#nick').is(':focus')){
+                g('.message input').focus();
+            }
+        });
+
         g('.chat input').on('keydown', function(e){
             if(e.which !== 13 || typeof nick === 'undefined') return;
-            console.log('sending');
             var text = g('.message input').val();
-            console.log(text);
             socket.emit('message', text);
+            g('.message input').val('');
         });
 
         //End
