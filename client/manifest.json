@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Agar chat",
+  "description": "Agar.io chat",
+  "version": "0.1",
+  "web_accessible_resources":["file.js", "socket.io.js"],
+  "content_scripts": [
+    {
+      "run_at" : "document_end",
+      "matches": ["http://agar.io/*"],
+      "css": ["styles.css"],
+      "js": ["jquery-1.11.3.min.js", "socket.io.js", "script.js"]
+    }
+  ],
+  "background": {
+      "scripts": ["background.js"]
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "http://agar.io/"
+  ]
+}
