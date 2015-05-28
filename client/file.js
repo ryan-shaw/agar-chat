@@ -53,8 +53,8 @@ var socket;
 
     function msgAppend(from, msg){
         g('.messages .list').append('<li><span class="name">' + from + ':</span> ' + msg);
-        var height = g('.messages .list').scrollHeight;
-        g('.messages .list').scrollTop(height);
+        var d = g('.messages');
+        d.scrollTop(d.prop("scrollHeight"));
     }
 
     function Fa() {

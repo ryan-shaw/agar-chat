@@ -13,7 +13,8 @@ io.on('connection', function(socket){
     });
 
     socket.on('message', function(msg){
-        console.log(socket.nick, msg);
+        msg = msg.trim();
+        if(msg.length === 0) return;
         io.emit('message', {nick: socket.nick, msg: msg});
     });
 });
