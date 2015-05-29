@@ -10,7 +10,7 @@ io.on('connection', function(socket){
         socket.join(data.room);
         socket.nick = data.nick;
         console.log('Joining room: ' + data.room + ', username: ' + data.nick);
-        socket.last_message = Date.now();
+        socket.last_message = Date.now() - 5 * 1000;
     });
 
     socket.on('message', function(msg){
