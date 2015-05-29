@@ -16,7 +16,6 @@ io.on('connection', function(socket){
     socket.on('message', function(msg){
         if(Date.now() - socket.last_message < 5 * 1000){
             socket.emit('message', {nick: 'System', msg: 'PLEASE ONLY SEND EVERY 5 SECONDS'});
-            socket.last_message = Date.now();
             return;
         }
         socket.last_message = Date.now();
